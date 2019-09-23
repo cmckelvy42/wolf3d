@@ -20,10 +20,12 @@ void	init(t_wolf *wolf)
 	wolf->player->spd = 1;
 	wolf->currentmap = 0;
 	init_player(wolf->player, wolf->map[0]);
-	wolf->mlx = mlx_init();
-	wolf->image = new_image(wolf, WIN_WIDTH, WIN_HEIGHT);
+	wolf->window = SDL_CreateWindow("Wolf3D", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_OPENGL);
+	wolf->renderer = SDL_CreateRenderer(wolf->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+	wolf->texture = ft_memalloc(sizeof(t_exture));
+	wolf->texture->tex = SDL_CreateTexture(wolf->renderer, SDL_GetWindowPixelFormat(wolf->window), SDL_TEXTUREACCESS_STREAMING, WIN_WIDTH, WIN_HEIGHT);
 	wolf->tiles = load_tilesheet(wolf);
-	wolf->window = mlx_new_window(wolf->mlx, WIN_WIDTH, WIN_HEIGHT, "Wolf3D");
+	SDL_SetWindowTitle(wolf->window, "Wolf3D");
 	loadsound(sound, "bgm.mp3");
 	playsound(sound, 0);
 	free(sound);
@@ -41,7 +43,7 @@ int		xy_to_point(t_wolf *wolf, int x, int y)
 	return (x + (y * wolf->map[wolf->currentmap]->width));
 }
 
-void	minimap(t_wolf *wolf)
+/* void	minimap(t_wolf *wolf)
 {
 	int	x;
 	int	y;
@@ -57,18 +59,18 @@ void	minimap(t_wolf *wolf)
 		{
 			tile = wolf->map[current]->points[xy_to_point(wolf, x, y)]->tile;
 			if (tile == SWITCH)
-				image_set_pixel(wolf->image, x * 7 + 10, y * 7 + 10, 0x0EC6F1);
+				surface_set_pixel(wolf->surface, x * 7 + 10, y * 7 + 10, 0x0EC6F1);
 			else if (tile == ELEVATOR || tile == DOOR)
-				image_set_pixel(wolf->image, x * 7 + 10, y * 7 + 10, 0xFF0000);
+				surface_set_pixel(wolf->surface, x * 7 + 10, y * 7 + 10, 0xFF0000);
 			else if (tile)
-				image_set_pixel(wolf->image, x * 7 + 10, y * 7 + 10, 0xFFFFFF);
+				surface_set_pixel(wolf->surface, x * 7 + 10, y * 7 + 10, 0xFFFFFF);
 			x++;
 		}
 		y++;
 	}
-	image_set_pixel(wolf->image, wolf->player->pos.x * 7 + 10,
+	surface_set_pixel(wolf->surface, wolf->player->pos.x * 7 + 10,
 		wolf->player->pos.y * 7 + 10, 0x00FF00);
-}
+} */
 
 int		open_map(int i)
 {

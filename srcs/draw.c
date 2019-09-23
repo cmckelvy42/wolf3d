@@ -12,84 +12,56 @@
 
 #include "wolf.h"
 
-void		*draw_thread(void *thread)
+void		*draw_thread(t_wolf *wolf)
 {
-	t_wolf		*wolf;
 	int			x;
 	double		camera;
 	t_vector	dir;
 
-	wolf = (t_wolf*)((t_thread*)thread)->wolf;
-	x = ((t_thread*)thread)->x;
+	x = 0;
 	while (x < WIN_WIDTH)
 	{
 		camera = 2.0f * x / WIN_WIDTH - 1;
 		dir.x = wolf->player->dir.x + wolf->player->plane.x * camera;
 		dir.y = wolf->player->dir.y + wolf->player->plane.y * camera;
 		draw_ray(wolf, dir, x);
-		x += THREADS;
+		x++;
 	}
 	return (NULL);
 }
 
-static void	untex_floorceiling(t_image *image)
+  static void	untex_floorceiling(t_exture *texture)
 {
-	int x;
-	int y;
-	int color;
+	int 	x;
+	int 	y;
+	int 	color;
 
-	y = 0;
 	color = 0x222222;
+	y = 0;
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
-		if (y > WIN_HEIGHT / 2 && color != 0x666666)
+		if (y > WIN_HEIGHT / 2 && color == 0x222222)
+		{
 			color = 0x666666;
+		}
 		while (x < WIN_WIDTH)
 		{
-			image_set_pixel(image, x, y, color);
+			texture->pixels[x + y * (texture->pitch / 4)] = color;
 			x++;
 		}
 		y++;
 	}
-}
-
-void		image_set_pixel(t_image *image, int x, int y, int color)
-{
-	if (x < 0 || x >= image->width || y < 0 || y >= image->height)
-		return ;
-	*(int*)(image->ptr + ((x + y * image->width) * image->bpp)) = color;
-}
-
-int			get_pixel(t_image *image, int x, int y)
-{
-	if (x < 0 || y < 0 || x >= image->width || y >= image->height)
-		return (0);
-	return (*(int *)(image->ptr + ((x + y * image->width)
-			* image->bpp)));
-}
+} 
 
 void		render(t_wolf *wolf)
 {
-	int			x;
-	int			i;
-	t_thread	threads[THREADS];
-
-	i = 0;
-	x = 0;
-	untex_floorceiling(wolf->image);
-	while (i < THREADS)
-	{
-		threads[i].x = i;
-		threads[i].wolf = wolf;
-		pthread_create(&(threads[i]).thread, NULL, draw_thread, &threads[i]);
-		i++;
-	}
-	i = 0;
-	while (i < THREADS)
-	{
-		pthread_join(threads[i++].thread, NULL);
-		minimap(wolf);
-	}
-	mlx_put_image_to_window(wolf, wolf->window, wolf->image->image, 0, 0);
+	SDL_LockTexture(wolf->texture->tex, NULL, &wolf->texture->data, &wolf->texture->pitch);
+	wolf->texture->pixels = (Uint32*)wolf->texture->data;
+	untex_floorceiling(wolf->texture);
+	draw_thread(wolf);
+	SDL_UnlockTexture(wolf->texture->tex);
+	SDL_RenderCopy(wolf->renderer, wolf->texture->tex, NULL, NULL);
+	 	//minimap(wolf);
+	SDL_RenderPresent(wolf->renderer);
 }

@@ -12,11 +12,6 @@
 
 #include "wolf.h"
 
-void		clear_image(t_image *image)
-{
-	ft_bzero(image->ptr, WIN_WIDTH * WIN_HEIGHT * image->bpp);
-}
-
 t_point		*set_point(t_map *map, int x, int y, char *str)
 {
 	t_point		*point;
@@ -56,6 +51,9 @@ int			main(void)
 	int			fd;
 	int			i;
 
+	SDL_Init(SDL_INIT_VIDEO);
+	IMG_Init(IMG_INIT_PNG);
+
 	if (!(wolf = (t_wolf*)ft_memalloc(sizeof(t_wolf))))
 		die("Malloc error.");
 	if (!(wolf->player = (t_player*)ft_memalloc(sizeof(t_player))))
@@ -71,9 +69,12 @@ int			main(void)
 		i++;
 	}
 	init(wolf);
-	mlx_loop_hook(wolf->mlx, game, wolf);
-	mlx_hook(wolf->window, 2, 0, key_hook, wolf);
-	mlx_hook(wolf->window, 17, 0, ft_close, wolf);
-	mlx_loop(wolf->mlx);
+	while (1)
+	{
+		key_hook(wolf);
+		SDL_SetRenderDrawColor (wolf->renderer, 0x00, 0x00, 0x00, 0xFF);
+		SDL_RenderClear(wolf->renderer);
+		render(wolf);
+	}
 	return (0);
 }

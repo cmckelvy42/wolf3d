@@ -32,6 +32,16 @@ t_ray	init_ray(t_wolf *wolf, t_vector dir)
 	return (ray);
 }
 
+SDL_Rect	create_pixelrect(int x, int y)
+{
+	SDL_Rect ret;
+	ret.x = x;
+	ret.y = y;
+	ret.w = 1;
+	ret.h = 1;
+	return (ret);
+}
+
 void	dda(t_wolf *wolf, t_ray *ray, t_vector dir)
 {
 	while (ray->hit == 0)
@@ -60,12 +70,30 @@ void	dda(t_wolf *wolf, t_ray *ray, t_vector dir)
 			(1 - ray->step.y) / 2) / dir.y;
 }
 
-int		texture_pixel(t_wolf *wolf, t_ray ray, t_vector dir, int y)
+int				get_texID(t_wolf *wolf, t_ray ray)
 {
-	int		texid;
+		int texid;
+
+		texid = (wolf->map[wolf->currentmap]->points[xy_to_point(wolf,
+	(int)ray.map.x, (int)ray.map.y)]->tile - 1) * 2;
+	if (!ray.side && ray.map.x > wolf->player->pos.x)
+		texid++;
+	else if (ray.side)
+	{
+		texid += 2;
+		if (ray.map.y > wolf->player->pos.y)
+			texid++;
+	}
+	return (texid);
+}
+
+Uint32		get_src_pixel(t_wolf *wolf, t_ray ray, t_vector dir, int y)
+{
 	double	wallx;
 	int		texx;
 	int		texy;
+	Uint32	*pixels;
+	int		texid;
 
 	texid = (wolf->map[wolf->currentmap]->points[xy_to_point(wolf,
 	(int)ray.map.x, (int)ray.map.y)]->tile - 1) * 2;
@@ -84,8 +112,22 @@ int		texture_pixel(t_wolf *wolf, t_ray ray, t_vector dir, int y)
 	if ((ray.side == 0 && dir.x > 0) || (ray.side == 1 && dir.y < 0))
 		texx = TEXWIDTH - texx - 1;
 	texy = (((double)y - (WIN_HEIGHT - ray.height) / 2) / ray.height *
-		wolf->tiles[texid]->height);
-	return (get_pixel(wolf->tiles[texid], texx, texy));
+		TEXHEIGHT);
+	pixels = (Uint32*)wolf->tiles->pixels;
+	if (texid > 6)
+		ft_abs(1);
+	return (pixels[(((wolf->tiles->pitch / 4) * (texid * 64 / wolf->tiles->w) * 64) + (texid * 64 % wolf->tiles->w)) + (texx + texy * (wolf->tiles->pitch / 4))]);
+}
+
+SDL_Rect	destRect(int x, int y)
+{
+	SDL_Rect ret;
+
+	ret.x = x;
+	ret.y = y;
+	ret.w = 1;
+	ret.h = 1;
+	return (ret);
 }
 
 void	draw_ray(t_wolf *wolf, t_vector dir, int x)
@@ -101,10 +143,10 @@ void	draw_ray(t_wolf *wolf, t_vector dir, int x)
 	drawstart = drawstart < 0 ? 0 : drawstart;
 	drawend = (WIN_HEIGHT + ray.height) / 2;
 	drawend = drawend >= WIN_HEIGHT ? WIN_HEIGHT - 1 : drawend;
+	
 	while (drawstart < drawend)
 	{
-		image_set_pixel(wolf->image, x, drawstart,
-			texture_pixel(wolf, ray, dir, drawstart));
+		wolf->texture->pixels[x + drawstart * (wolf->texture->pitch / 4)] = get_src_pixel(wolf, ray, dir, drawstart);
 		drawstart++;
 	}
 }

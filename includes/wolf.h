@@ -18,7 +18,7 @@
 # define FLIPPED 21
 # define ELEVATOR 51
 # define SECRET 33
-# define THREADS 10
+# define THREADS 1
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 # define WIN_WIDTH 840
@@ -28,21 +28,12 @@
 # define CHECK_BAD(x)			if (x) return (-1)
 
 # include "../libft/includes/libft.h"
-# include "../minilibx_macos/mlx.h"
 # include <math.h>
 # include <pthread.h>
 # include "../fmod/fmod.h"
-
-typedef struct			s_image
-{
-	void				*image;
-	char				*ptr;
-	int					bpp;
-	int					stride;
-	int					endian;
-	int					width;
-	int					height;
-}						t_image;
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
+# include <SDL2/SDL_ttf.h>
 
 typedef struct			s_point
 {
@@ -75,7 +66,7 @@ typedef struct			s_yaboi
 	int					hit;
 	int					side;
 	int					height;
-	t_image				*texture;
+	SDL_Surface			*texture;
 }						t_ray;
 
 typedef struct			s_player
@@ -86,15 +77,23 @@ typedef struct			s_player
 	int					spd;
 }						t_player;
 
+typedef struct			s_texture
+{
+	SDL_Texture			*tex;
+	void				*data;
+	int					pitch;
+	Uint32				*pixels;
+}						t_exture;
+
 typedef struct			s_wolf
 {
-	void				*mlx;
-	void				*window;
-	t_image				*image;
+	SDL_Window			*window;
+	SDL_Renderer		*renderer;
 	t_map				**map;
 	t_player			*player;
-	t_image				**tiles;
+	SDL_Surface			*tiles;
 	int					currentmap;
+	t_exture			*texture;
 }						t_wolf;
 
 typedef struct			s_thread
@@ -120,27 +119,25 @@ void					playsound(t_sound *sound, int pause);
 void					loadsound(t_sound *sound, const char *filename);
 int						read_file(int fd, t_map **map);
 void					render(t_wolf *wolf);
-int						get_pixel(t_image *image, int x, int y);
-void					image_set_pixel(t_image *image, int x, int y,
-						int color);
 void					draw_ray(t_wolf *wolf, t_vector dir, int x);
 int						get_tile(t_map *map, int x, int y);
 void					init_player(t_player *player, t_map *map);
 void					player_rotate(t_player *player, float angle);
 void					player_move(t_player *player, t_map *map,
 						float distance);
-t_image					*new_image(t_wolf *wolf, int width, int height);
-t_image					*del_image(t_wolf *wolf, t_image *image);
-t_image					**load_tilesheet(t_wolf *wolf);
+SDL_Surface				*load_tilesheet(t_wolf *wolf);
+int			tileX(int i, int sheetwidth);
+int			tileY(int i, int sheetwidth);
 t_point					*set_point(t_map *map, int x, int y, char *str);
-void					clear_image(t_image *image);
 void					die(const char *str);
 int						ft_close(void);
 int						xy_to_point(t_wolf *wolf, int x, int y);
 void					minimap(t_wolf *wolf);
 void					init(t_wolf *wolf);
-int						key_hook(int key, t_wolf *wolf);
+void					key_hook(t_wolf *wolf);
 t_sound					*initsound(void);
 int						open_map(int i);
+Uint32					surface_get_pixel(SDL_Surface *image, int x, int y);
+void					surface_set_pixel(SDL_Surface *image, int x, int y, Uint32 pixel);
 
 #endif

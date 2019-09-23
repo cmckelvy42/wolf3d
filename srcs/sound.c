@@ -48,5 +48,7 @@ void		playsound(t_sound *sound, int pause)
 {
 	sound->result = FMOD_System_PlaySound(sound->fmodsystem,
 		sound->sound, sound->music, pause, &sound->channel);
+	if (sound->result != FMOD_OK)
+		return ;
 	FMOD_Channel_SetMode(sound->channel, FMOD_LOOP_NORMAL);
 }
