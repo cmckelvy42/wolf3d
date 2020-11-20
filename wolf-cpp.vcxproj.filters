@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="SDL2">
+      <UniqueIdentifier>{acadec2f-3592-4d22-b059-570b166e1400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fmod">
+      <UniqueIdentifier>{b9ab52f3-9726-409f-9ee5-2f53b5e46fbd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="srcs\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Wolf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Ray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\gameMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\gameMap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\mapPoint.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Player.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Ray.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Sound.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Wolf.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\begin_code.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\close_code.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_assert.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_atomic.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_audio.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_bits.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_blendmode.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_clipboard.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_android.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_iphoneos.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_macosx.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_minimal.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_pandora.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_psp.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_windows.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_winrt.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_config_wiz.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_copying.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_cpuinfo.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_egl.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_endian.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_error.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_events.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_filesystem.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_gamecontroller.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_gesture.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_haptic.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_hints.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_joystick.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_keyboard.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_keycode.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_loadso.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_log.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_main.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_messagebox.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_metal.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_mouse.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_mutex.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_name.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengl.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengl_glext.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengles.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengles2.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengles2_gl2.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengles2_gl2ext.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengles2_gl2platform.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_opengles2_khrplatform.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_pixels.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_platform.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_power.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_quit.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_rect.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_render.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_revision.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_rwops.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_scancode.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_sensor.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_shape.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_stdinc.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_surface.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_system.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_syswm.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_assert.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_common.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_compare.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_crc32.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_font.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_fuzzer.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_harness.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_images.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_log.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_md5.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_memory.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_test_random.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_thread.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_timer.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_touch.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_types.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_version.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_video.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl2\include\SDL_vulkan.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\shared.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Input.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod_dsp_effects.h">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod_errors.h">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod_output.h">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod.h">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod.hpp">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod_codec.h">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod_common.h">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\core\inc\fmod_dsp.h">
+      <Filter>fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2_image\include\SDL_image.h">
+      <Filter>SDL2</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="fmod\core\inc\fmod_errors.cs">
+      <Filter>fmod</Filter>
+    </None>
+    <None Include="fmod\core\inc\fmod.cs">
+      <Filter>fmod</Filter>
+    </None>
+    <None Include="fmod\core\inc\fmod_dsp.cs">
+      <Filter>fmod</Filter>
+    </None>
+  </ItemGroup>
+</Project>
