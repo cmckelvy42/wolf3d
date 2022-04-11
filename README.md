@@ -1,6 +1,8 @@
 # wolf3d
 Raycasting engine remade in C++ with SDL2.
 
+![alt-text](https://i.imgur.com/JDhi7ie.png)
+
 ## How to Use
 All you have to do is build the solution and drop
 the exe in the base folder with the maps, tilesheet, bgm, and appropriate dlls.
